@@ -1,6 +1,7 @@
 import email
 import datetime
 from django.utils import dateformat
+from django.utils.feedgenerator import rfc2822_date
 
 # Try to use dateutil for maximum date-parsing niceness. Fall back to
 # hard-coded RFC2822 parsing if that's not possible.
@@ -14,7 +15,7 @@ def format_datetime(dt):
     """
     RFC 2822 datetime formatter
     """
-    return dateformat.format(dt, 'r')
+    return rfc2822_date(dt)
 
 def format_date(d):
     """
