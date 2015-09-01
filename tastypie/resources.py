@@ -1715,11 +1715,15 @@ class ModelResource(Resource):
         Turn the string ``value`` into a python object.
         """
         # Simple values
-        if value in ['true', 'True', True]:
+        true_values_list = ['true', 'True', True]
+        false_values_list = ['false', 'False', False]
+        none_values_list = ('nil', 'none', 'None', None)
+
+        if value in true_values_list:
             value = True
-        elif value in ['false', 'False', False]:
+        elif value in false_values_list:
             value = False
-        elif value in ('nil', 'none', 'None', None):
+        elif value in none_values_list:
             value = None
 
         # Split on ',' if not empty string and either an in or range filter.
